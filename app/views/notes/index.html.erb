@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Notes" %>
+
+<h1>Notes</h1>
+
+
+<div id="notes">
+  <% @notes.each do |note| %>
+    <%= render note %>
+    <p>
+      <%= link_to "Show this note", note %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New Note", new_note_path, class: "button", data: { turbo_frame: "modal" } %>

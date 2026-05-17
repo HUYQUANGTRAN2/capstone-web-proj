@@ -1,0 +1,7 @@
+<%= turbo_frame_tag "modal" do %>
+  <div class="modal">
+    <h1>New Note</h1>
+    <%= render "form", note: @note %>
+    <%= link_to "Cancel", notes_path %>
+  </div>
+<% end %>

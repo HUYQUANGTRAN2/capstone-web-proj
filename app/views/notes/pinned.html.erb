@@ -1,0 +1,12 @@
+<h1>Pinned Notes</h1>
+
+<% if @notes.any? %>
+  <% @notes.each do |note| %>
+    <%= link_to note_path(note), class: "note-card" do %>
+      <h2><%= note.title %></h2>
+      <p><%= truncate(note.body, length: 100) %></p>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>No pinned notes yet.</p>
+<% end %>
