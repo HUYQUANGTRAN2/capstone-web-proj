@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: %i[ show edit update destroy ]
+  before_action :require_sign_in
+  before_action :set_note, only: %i[show edit update destroy]
 
   # GET /notes or /notes.json
   def index
@@ -56,8 +57,8 @@ class NotesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_note
-      @note = Note.find(params.expect(:id))
-    end
+     @note = Note.find(params[:id])
+    end 
 
     # Only allow a list of trusted parameters through.
     def note_params

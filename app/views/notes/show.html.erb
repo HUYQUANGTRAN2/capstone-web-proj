@@ -1,5 +1,5 @@
 <p style="color: green"><%= notice %></p>
-<% content_for :title, @note.title %>
+<% content_for :title, (@note&.title || "Note") %>
 <div class="page-header">
   <div>
     <% if @note.pinned? %>
@@ -11,7 +11,7 @@
 </div>
 
 <div class="note-body">
-  <%= simple_format(@note.body) %>
+  <%= @note.body %>
 </div>
 
 <div class="actions">

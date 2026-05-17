@@ -1,29 +1,38 @@
 <% content_for :title, "Notes" %>
 
-<div class="page-header">
-  <%= link_to "New", new_note_path, class: "button" %>
-</div>
+<div class="notes-page">
+  <div>
+    <div class="page-header">
+      <%= link_to "New", new_note_path, class: "button" %>
+    </div>
 
-<% if @notes.any? %>
-  <div class="notes-list">
-    <% @notes.each do |note| %>
-      <%= link_to note_path(note), class: "note-card" do %>
+    <% if @notes.any? %>
+      <div class="notes-list">
+        <% @notes.each do |note| %>
+          <%= link_to note_path(note), class: "note-card" do %>
+            <div class="note-card-header">
+              <h2><%= note.title %></h2>
 
-        <div class="note-card-header">
-          <h2><%= note.title %></h2>
+              <% if note.pinned? %>
+                <span>📌</span>
+              <% end %>
+            </div>
 
-          <% if note.pinned? %>
-            <span>📌</span>
+            <p><%= truncate(strip_tags(note.body.to_s), length: 120) %></p>
           <% end %>
-        </div>
-
-        <p>
-          <%= truncate(note.body, length: 120) %>
-        </p>
-
-      <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <p>No notes yet.</p>
     <% end %>
   </div>
-<% else %>
-  <p>No notes yet.</p>
-<% end %>
+
+  <% if signed_in? %>
+    <div class="bottom-actions">
+      <%= button_to "Log Out",
+          sign_out_path,
+          method: :delete,
+          class: "danger-button full-width-button" %>
+    </div>
+  <% end %>
+</div>

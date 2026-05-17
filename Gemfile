@@ -20,6 +20,7 @@ gem "http"                            # Simple HTTP client for APIs
 gem "rollbar"                         # Error tracking in production
 gem "cgi" # Required for Ruby 4.0+ (removed from stdlib)
 gem "tsort" # Required for Ruby 4.0+ (moving out of default gems)
+gem "bcrypt", "~> 3.1.7"
 
 group :development, :test do
   gem "debug", platforms: %i[mri windows], require: "debug/prelude" # Ruby debugger
@@ -53,3 +54,6 @@ group :test do
   gem "shoulda-matchers", "~> 7.0" # One-liner tests for common patterns
   gem "webmock"                       # Mock HTTP requests in tests
 end
+
+gem "image_processing", "~> 1.14"
+gem "mini_magick"

@@ -1,8 +1,9 @@
 <% content_for :title, "New Note" %>
 <%= turbo_frame_tag "modal" do %>
   <div class="modal">
-    <h1>New Note</h1>
     <%= render "form", note: @note %>
-    <%= link_to "Cancel", notes_path %>
+    <%= link_to "Cancel", notes_path,
+      class: "button secondary-button",
+      data: { turbo: false } %>
   </div>
 <% end %>
