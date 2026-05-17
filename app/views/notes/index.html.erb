@@ -1,17 +1,29 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Notes" %>
 
-<h1>Notes</h1>
-
-
-<div id="notes">
-  <% @notes.each do |note| %>
-    <%= render note %>
-    <p>
-      <%= link_to "Show this note", note %>
-    </p>
-  <% end %>
+<div class="page-header">
+  <%= link_to "New", new_note_path, class: "button" %>
 </div>
 
-<%= link_to "New Note", new_note_path, class: "button", data: { turbo_frame: "modal" } %>
+<% if @notes.any? %>
+  <div class="notes-list">
+    <% @notes.each do |note| %>
+      <%= link_to note_path(note), class: "note-card" do %>
+
+        <div class="note-card-header">
+          <h2><%= note.title %></h2>
+
+          <% if note.pinned? %>
+            <span>📌</span>
+          <% end %>
+        </div>
+
+        <p>
+          <%= truncate(note.body, length: 120) %>
+        </p>
+
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <p>No notes yet.</p>
+<% end %>

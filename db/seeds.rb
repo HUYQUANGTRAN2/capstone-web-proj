@@ -7,3 +7,13 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+Note.destroy_all
+
+5.times do |i|
+  Note.create!(
+    title: "Sample Note #{i + 1}",
+    body: "This is a sample note for the Hotwire Native app project.",
+    pinned: i.even?
+  )
+end
