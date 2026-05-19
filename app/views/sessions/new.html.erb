@@ -3,7 +3,7 @@
 <div class="auth-page">
   <div>
 
-    <%= form_with url: sign_in_path, data: { turbo: false } do |form| %>
+    <%= form_with url: sign_in_path, method: :post, data: { turbo: false } do |form| %>
 
       <div class="field">
         <%= form.label :email %>
