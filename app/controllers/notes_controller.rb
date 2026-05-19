@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :require_sign_in
+  before_action :require_sign_in, only: %i[new create edit update destroy]
   before_action :set_note, only: %i[show edit update destroy]
 
   # GET /notes or /notes.json
