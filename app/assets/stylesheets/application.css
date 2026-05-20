@@ -177,3 +177,33 @@ trix-editor img {
   max-width: 100%;
   border-radius: 12px;
 }
+
+.note-preview {
+  max-height: 120px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.note-preview img {
+  width: 72px;
+  height: 72px;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+
+  display: block;
+}
+
+.note-preview action-text-attachment {
+  display: block;
+}
+
+.note-preview p {
+  margin: 0;
+  color: #444;
+  font-size: 14px;
+}

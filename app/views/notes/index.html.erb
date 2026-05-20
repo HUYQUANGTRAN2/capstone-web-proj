@@ -18,7 +18,9 @@
               <% end %>
             </div>
 
-            <p><%= truncate(strip_tags(note.body.to_s), length: 120) %></p>
+            <div class="note-preview">
+              <%= note.body %>
+            </div>
           <% end %>
         <% end %>
       </div>

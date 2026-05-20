@@ -23,9 +23,9 @@ class NotesController < ApplicationController
   # POST /notes or /notes.json
   def create
     @note = Note.new(note_params)
-
+    
     if @note.save
-      redirect_to notes_path, notice: "Note created successfully."
+      redirect_to notes_path, notice: "Note was successfully created."
     else
       render :new, status: :unprocessable_entity
     end

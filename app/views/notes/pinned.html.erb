@@ -7,10 +7,20 @@
     <% if @notes.any? %>
       <div class="notes-list">
         <% @notes.each do |note| %>
+
           <%= link_to note_path(note), class: "note-card" do %>
-            <h2><%= note.title %></h2>
-            <p><%= truncate(strip_tags(note.body.to_s), length: 100) %></p>
+
+            <div class="note-card-header">
+              <h2><%= note.title %></h2>
+              <span>📌</span>
+            </div>
+
+            <div class="note-preview">
+              <%= note.body %>
+            </div>
+
           <% end %>
+
         <% end %>
       </div>
     <% else %>
@@ -18,16 +28,12 @@
     <% end %>
   </div>
 
-  <div class="bottom-actions">
-    <% if signed_in? %>
+  <% if signed_in? %>
+    <div class="bottom-actions">
       <%= button_to "Log Out",
           sign_out_path,
           method: :delete,
           class: "danger-button full-width-button" %>
-    <% else %>
-      <%= link_to "Sign In",
-          sign_in_path,
-          class: "button full-width-button" %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
