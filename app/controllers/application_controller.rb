@@ -1,7 +1,6 @@
 # app/controllers/application_controller.rb
 class ApplicationController < ActionController::Base
   helper_method :current_user, :signed_in?
-  include Turbo::Native::Navigation
 
   private
 
